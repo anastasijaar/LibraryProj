@@ -1,28 +1,6 @@
 <template>
   <div class="container">
     <div class="row">
-      <!-- Forma za read -->
-      <div class="col-12">
-
-        <button class="btn btn-info mb-3" @click="getData">Get data</button>
-
-        <div class="row">
-          <div class="col-md-4 mb-3" v-for="book in allData" :key="book.Id">
-            <div class="card">
-              <div class="card-body">
-                <p>ID: {{ book.Id }}</p>
-                <p>Name: {{ book.Name }}</p>
-                <p>Country: {{ book.Country }}</p>
-                <p>Title: {{ book.Title }}</p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="col-12">
-        <button class="btn btn-success mb-3" @click="goTo">Go to</button>
-      </div>
 
       <!-- Add -->
       <div class="col-md-4">
@@ -216,8 +194,8 @@ export default {
 
       if (this.addName && this.addCountry && this.addTitle) {
         axios.post('/api/library', data)
-          .then(response => console.log(response))
-          .catch(error => console.error(error));
+            .then(response => console.log(response))
+            .catch(error => console.error(error));
       } else {
         console.log('Data is empty!');
       }
@@ -263,8 +241,8 @@ export default {
 
       if (this.id) {
         axios.put('/api/book/' + this.id, data)
-          .then(response => console.log(response))
-          .catch(error => console.error(error));
+            .then(response => console.log(response))
+            .catch(error => console.error(error));
       }
     },
     deleteOne: function (e) {
@@ -283,20 +261,6 @@ export default {
             .catch(error => console.error(error));
       }
     },
-    getData: function (e) {
-      e.preventDefault();
-
-      axios.get('/api/library')
-          .then(response => this.allData = response.data)
-          .catch(error => console.error(error));
-    },
-
-    goTo: function (e) {
-      e.preventDefault();
-
-      //let routeData = this.$router.resolve({name: 'routeName', query: {data: "someData"}});
-      //window.open(routeData.href, '_blank');
-    }
   }
 };
 </script>

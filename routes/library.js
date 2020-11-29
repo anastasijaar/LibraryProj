@@ -28,7 +28,6 @@ const readAllBooks = (req, res) => {
         else
             res.send(rows);
     });
-
 }
 
 const createNewRow = (req, res) => {
